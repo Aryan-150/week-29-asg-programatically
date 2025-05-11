@@ -1,9 +1,10 @@
 import { AutoScalingClient, SetDesiredCapacityCommand } from "@aws-sdk/client-auto-scaling";
-import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from "./config";
+import dotenv from "dotenv";
+dotenv.config();
 
 const client = new AutoScalingClient({ region: "ap-south-1", credentials: {
-    accessKeyId: AWS_ACCESS_KEY,
-    secretAccessKey: AWS_SECRET_ACCESS_KEY
+    accessKeyId: process.env.AWS_ACCESS_KEY!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!
 } });
 
 const command = new SetDesiredCapacityCommand({
