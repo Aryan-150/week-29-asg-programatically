@@ -1,0 +1,19 @@
+{
+  "name": "week-30-bolty-worker-project",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@aws-sdk/client-auto-scaling": "^3.806.0",
+    "@aws-sdk/client-ec2": "^3.806.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
