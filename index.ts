@@ -12,3 +12,5 @@ app.get("/", (req,res) => {
 app.get("/host", (req,res) => {
     res.send(os.hostname());
 })
+
+app.listen(3000);
