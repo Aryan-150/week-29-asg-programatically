@@ -1,11 +1,15 @@
 FROM codercom/code-server:4.96.4
 
+# when we are trying to run some bash commands like "update", "curl" etc, 
+# we gotta give user root access
 USER root
 
 RUN apt-get update \
     && apt-get install -y curl \
-    && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
-    && apt-get install -y nodejs \
+    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
+    && export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" \
+    && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
+    && nvm install node \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
